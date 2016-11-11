@@ -4,7 +4,6 @@ module.exports = {
   context: __dirname,
   entry: './algorithms.jsx',
   output: {
-    path: path.join(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
   },
   resolve: {
