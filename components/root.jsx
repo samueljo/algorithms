@@ -1,10 +1,10 @@
 import React from 'react';
 import Tabs from './tabs';
-import Maze from './mazesolver/maze';
+import MazeSolver from './mazesolver/mazesolver';
 
 const algos = [
   {title: 'N-Queens', content: 'N-Queens Component Goes Here'},
-  {title: 'Maze Solver', content: <Maze />},
+  {title: 'Maze Solver', content: <MazeSolver />},
   {title: 'Other', content: 'Other Algo'}
 ];
 
