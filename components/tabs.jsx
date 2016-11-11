@@ -5,9 +5,9 @@ class Headers extends React.Component {
     let selected = this.props.selectedPane;
     let headers = this.props.algos.map((pane, idx) => {
       let title = pane.title;
-      let klass = '';
+      let klass = 'tab';
       if (idx === selected) {
-        klass = 'active';
+        klass = 'active tab';
       }
       return (
         <span
@@ -26,7 +26,7 @@ class Headers extends React.Component {
   }
 }
 
-class Tabs extends React.Component {
+export default class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = { selectedPane: 0 };
@@ -48,13 +48,9 @@ class Tabs extends React.Component {
           algos={this.props.algos}>
         </Headers>
         <div className='tab-content'>
-          <p>
-            {pane.content}
-          </p>
+          {pane.content}
         </div>
       </div>
     );
   }
 }
-
-export default Tabs;

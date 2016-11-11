@@ -1,0 +1,85 @@
+/* RESET */
+html, body, header, nav, h1, a, ul, li,
+strong, main, section, img, div, span, h2, p,
+form, fieldset, label, input, textarea,
+button, article, footer, small, table, tbody, tr, td {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ outline: 0;
+ font: inherit;
+ box-sizing: inherit;
+ text-align: inherit;
+ text-decoration: inherit;
+ vertical-align: inherit;
+ color: inherit;
+ background: transparent;
+}
+
+/* CLEARFIX */
+
+.group:after {
+ content: "";
+ clear: both;
+ display: block;
+}
+
+/* ELEMENTS */
+
+body {
+font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+background: #f3f3f3;
+color: #333;
+}
+
+ul {
+ list-style: none;
+}
+
+.main-header {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  background: #ccc;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 20px;
+}
+
+.active {
+  background: #000;
+  color: #fff;
+  font-weight: 800;
+}
+
+.tab:hover {
+  background: #000;
+  color: #fff;
+}
+
+.tab-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.maze {
+  border: 1px solid #000;
+}
+
+.maze-row {
+  height: 25px;
+}
+
+.maze-row > td {
+  border: 1px solid #000;
+  width: 25px;
+}
