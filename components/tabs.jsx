@@ -1,24 +1,56 @@
 import React from 'react';
 
+class Headers extends React.Component {
+  render() {
+    let selected = this.props.selectedPane;
+    let headers = this.props.algos.map((pane, idx) => {
+      let title = pane.title;
+      let klass = '';
+      if (idx === selected) {
+        klass = 'active';
+      }
+      return (
+        <span
+          key={idx}
+          className={klass}
+          onClick={this.props.onTabChosen.bind(null, idx)}>
+          {title}{' '}
+        </span>
+      );
+    });
+    return (
+      <div className='tab-header'>
+        {headers}
+      </div>
+    );
+  }
+}
+
 class Tabs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedAlgo: 0 };
+    this.state = { selectedPane: 0 };
     this.selectTab = this.selectTab.bind(this);
   }
 
   selectTab(num) {
-    this.setState({ selectedAlgo: num });
+    this.setState({ selectedPane: num });
   }
 
   render() {
-    let algo = this.props.algos[this.state.selectedAlgo];
+    let pane = this.props.algos[this.state.selectedPane];
 
     return (
-      <div>
-        <h1>Algos</h1>
-        <div className='tabs'>
-          ALGOS
+      <div className='tabs'>
+        <Headers
+          selectedPane={this.state.selectedPane}
+          onTabChosen={this.selectTab}
+          algos={this.props.algos}>
+        </Headers>
+        <div className='tab-content'>
+          <p>
+            {pane.content}
+          </p>
         </div>
       </div>
     );
