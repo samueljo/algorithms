@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Maze extends React.Component {
+export default class MazeBuilder extends React.Component {
   constructor(props) {
     super(props);
     this.startPoint = false;

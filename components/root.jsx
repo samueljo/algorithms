@@ -1,6 +1,6 @@
 import React from 'react';
 import Tabs from './tabs';
-import MazeSolver from './mazesolver/mazesolver';
+import MazeSolver from './mazesolver/MazeSolver';
 
 const algos = [
   {title: 'N-Queens', content: 'N-Queens Component Goes Here'},

@@ -85,9 +85,9 @@
 }
 
 .maze-button {
-  width: 75px;
+  width: 80%;
   text-align: center;
-  margin: 15px;
+  margin: 10px;
   display: block;
   padding: 10px 30px;
   background: #ccc;
