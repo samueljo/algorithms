@@ -8,11 +8,11 @@ export default class Maze extends React.Component {
     this.toggleSpace = this.toggleSpace.bind(this);
   }
 
-  createCols() {
+  createCols(row) {
     const cols = [];
     for (let i = 0; i < this.props.size; i++) {
       cols.push(<td
-        id={i}
+        id={`${row} x ${i}`}
         className='maze-space'
         onClick={this.toggleSpace}></td>);
     }
@@ -23,7 +23,7 @@ export default class Maze extends React.Component {
     const rows = [];
     let cols;
     for (let i = 0; i < this.props.size; i++) {
-      cols = this.createCols();
+      cols = this.createCols(i);
       rows.push(<tr id={i} className='maze-row'>{cols}</tr>);
     }
     return rows;
@@ -42,23 +42,30 @@ export default class Maze extends React.Component {
   toggleSpaceClass(e, className) {
     if (e.target.className.includes(className)) {
       if (className === 'start') {
+        this.props.setStartPoint(null);
         this.startPoint = false;
       } else if (className === 'end') {
+        this.props.setEndPoint(null);
         this.endPoint = false;
+      } else if (className === 'wall') {
+        this.props.setWalls(e.target.id, null);
       }
       e.target.className = 'maze-space';
-    } else if (this.noStartOrEndPoint(className)) {
+    } else if (this.noStartOrEndPoint(e, className)) {
       e.target.className += ` ${className}`;
     } else if (className === 'wall') {
+      this.props.setWalls(e.target.id, e.target);
       e.target.className += ` ${className}`;
     }
   }
 
-  noStartOrEndPoint(className) {
+  noStartOrEndPoint(e, className) {
     if (className === 'start' && !this.startPoint) {
+      this.props.setStartPoint(e.target);
       this.startPoint = true;
       return true;
     } else if (className === 'end' && !this.endPoint) {
+      this.props.setEndPoint(e.target);
       this.endPoint = true;
       return true;
     } else {
