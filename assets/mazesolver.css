@@ -1,0 +1,120 @@
+.maze-solver {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.maze-row {
+  height: 25px;
+}
+
+.maze-row > td {
+  border: 1px solid #000;
+  width: 25px;
+}
+
+.sidebar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.slider-label {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.slider-markers {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-val {
+  margin-top: 10px;
+  border: 1px solid #000;
+  padding: 4px;
+  font-weight: 800;
+}
+
+.rheostat-background {
+  background-color: #fff;
+  border: 1px solid #000;
+  position: relative;
+}
+
+.rheostat-progress {
+  left: 1px !important;
+  background-color: #ccc;
+  position: absolute;
+}
+
+.rheostat-handle {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  height: 20px;
+  z-index: 1;
+  width: 20px;
+}
+
+.rheostat-horizontal .rheostat-background {
+  height: 12px;
+  top: 0px;
+  width: 100%;
+}
+
+.rheostat-horizontal .rheostat-progress {
+  height: 10px;
+  top: 2px;
+}
+
+.rheostat-horizontal .rheostat-handle {
+  margin-left: -12px;
+  top: -4px;
+}
+
+.maze-button {
+  width: 75px;
+  text-align: center;
+  margin: 15px;
+  display: block;
+  padding: 10px 30px;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.maze-button:hover {
+  background: #000;
+  color: #fff;
+}
+
+.maze-space:hover {
+  background: #ccc;
+}
+
+.start {
+  background: green;
+}
+
+.end {
+  background: red;
+}
+
+.wall {
+  background: #3d3d3d;
+}
+
+.active {
+  background: #000;
+  color: #fff;
+  font-weight: 800;
+}
