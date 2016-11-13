@@ -1,5 +1,5 @@
 import React from 'react';
-import RCSlider from 'rc-slider';
+import Rheostat from 'rheostat';
 
 export default class SetupBar extends React.Component {
   constructor(props) {
@@ -18,15 +18,6 @@ export default class SetupBar extends React.Component {
   }
 
   render() {
-    const marks = {
-      5: '5x5',
-      10: '10x10',
-      15: '15x15',
-      20: '20x20',
-      25: '25x25',
-      30: '30x30',
-    };
-
     let startClass;
     let endClass;
     if (this.state.setStart) {
@@ -36,18 +27,23 @@ export default class SetupBar extends React.Component {
       startClass = 'maze-button';
       endClass = 'maze-button active';
     }
-    
+
     return(
       <div className='sidebar'>
         <div className='slider'>
-          <RCSlider
-            defaultValue={20}
+          <span className='slider-label'>Maze Size</span>
+          <Rheostat
+            className='rheostat'
+            onChange={this.props.setSize}
             min={5}
             max={30}
-            onChange={this.modulateSpeed}
-            onAfterChange={this.props.setSize}
-            marks={marks}
+            values={[this.props.size]}
           />
+        <div className='slider-markers'>
+          <span>5</span>
+          <span className='slider-val'>{this.props.size}</span>
+          <span>30</span>
+        </div>
         </div>
         <button
           className={startClass}

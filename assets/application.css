@@ -72,10 +72,6 @@ ul {
   justify-content: space-around;
 }
 
-.maze {
-  border: 1px solid #000;
-}
-
 .maze-row {
   height: 25px;
 }
@@ -89,13 +85,93 @@ ul {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 25%;
 }
 
 .slider {
-  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.slider-label {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.slider-markers {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-val {
+  margin-top: 10px;
+  border: 1px solid #000;
+  padding: 4px;
+  font-weight: 800;
+}
+
+.rheostat-background {
+  background-color: #fff;
+  border: 1px solid #000;
+  position: relative;
+}
+
+.rheostat-progress {
+  left: 1px !important;
+  background-color: #ccc;
+  position: absolute;
+}
+
+.rheostat-handle {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  height: 20px;
+  z-index: 1;
+  width: 20px;
+}
+
+.rheostat-horizontal {
+  height: 12px;
+}
+
+.rheostat-horizontal .rheostat-background {
+  height: 12px;
+  top: 0px;
+  width: 100%;
+}
+
+.rheostat-horizontal .rheostat-progress {
+  height: 10px;
+  top: 2px;
+}
+
+.rheostat-horizontal .rheostat-handle {
+  margin-left: -12px;
+  top: -4px;
+}
+
+.rheostat-horizontal .rheostat-handle:before,
+.rheostat-horizontal .rheostat-handle:after {
+  top: 7px;
+  height: 10px;
+  width: 1px;
+}
+
+.rheostat-horizontal .rheostat-handle:before {
+  left: 10px;
+}
+
+.rheostat-horizontal .rheostat-handle:after {
+  left: 13px;
 }
 
 .maze-button {
+  width: 75px;
+  text-align: center;
   margin: 15px;
   display: block;
   padding: 10px 30px;

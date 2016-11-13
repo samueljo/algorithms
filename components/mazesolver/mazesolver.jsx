@@ -10,13 +10,13 @@ export default class MazeSolver extends React.Component {
   }
 
   setSize(e) {
-    this.setState({ size: parseInt(e.value) });
+    this.setState({ size: parseInt(e.values[0]) });
   }
 
   render() {
     return (
       <div className='maze-solver'>
-        <SetupBar setSize={this.setSize} />
+        <SetupBar setSize={this.setSize} size={this.state.size} />
         <Maze size={this.state.size} />
       </div>
     );
