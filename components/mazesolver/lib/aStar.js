@@ -15,4 +15,14 @@ export default class AStar {
   solve(startPoint, endPoint, walls) {
   }
 
+  _aStar() {
+    while (this.openPath.length > 0) {
+      let lowParent = 0;
+      for (let i = 0; i < this.openPath.length; i++) {
+        if (this.openPath[i].fCost < this.openPath[lowParent].fCost) {
+          lowParent = i;
+        }
+      }
+    }
+  }
 }
