@@ -70,7 +70,11 @@ export default class MazeSolver extends React.Component {
   solveMaze() {
     const update = { start: false, end: false, solving: true };
     this.setState(Object.assign(this.state, update));
-    AStar.solve(this.state.startPoint, this.state.endPoint, this.state.walls);
+    const aStar = new AStar(
+      this.state.startPoint,
+      this.state.endPoint,
+      this.state.walls);
+    aStar.solve();
   }
 
   render() {

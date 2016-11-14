@@ -103,6 +103,10 @@
   background: #ccc;
 }
 
+.path {
+  background: rgb(20, 16, 255);
+}
+
 .start {
   background: green;
 }
@@ -113,10 +117,6 @@
 
 .wall {
   background: #3d3d3d;
-}
-
-.path {
-  background: rgb(20, 16, 255);
 }
 
 .active {
