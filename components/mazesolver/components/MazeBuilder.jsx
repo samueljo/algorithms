@@ -8,11 +8,11 @@ export default class MazeBuilder extends React.Component {
     this.toggleSpace = this.toggleSpace.bind(this);
   }
 
-  createCols(row) {
+  createCols() {
     const cols = [];
     for (let i = 0; i < this.props.size; i++) {
       cols.push(<td
-        id={`${row} x ${i}`}
+        key={i}
         className='maze-space'
         onClick={this.toggleSpace}></td>);
     }
@@ -23,8 +23,8 @@ export default class MazeBuilder extends React.Component {
     const rows = [];
     let cols;
     for (let i = 0; i < this.props.size; i++) {
-      cols = this.createCols(i);
-      rows.push(<tr id={i} className='maze-row'>{cols}</tr>);
+      cols = this.createCols();
+      rows.push(<tr key={i} className='maze-row'>{cols}</tr>);
     }
     return rows;
   }
