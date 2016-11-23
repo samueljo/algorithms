@@ -5,7 +5,9 @@ export default class MazeBuilder extends React.Component {
     super(props);
     this.startPoint = false;
     this.endPoint = false;
+    this.wallBuilder = false;
     this.toggleSpace = this.toggleSpace.bind(this);
+    this.toggleWall = this.toggleWall.bind(this);
   }
 
   createCols() {
@@ -14,7 +16,8 @@ export default class MazeBuilder extends React.Component {
       cols.push(<td
         key={i}
         className='maze-space'
-        onClick={this.toggleSpace}></td>);
+        onClick={this.toggleSpace}
+        onMouseOver={this.toggleWall}></td>);
     }
     return cols;
   }
@@ -35,8 +38,18 @@ export default class MazeBuilder extends React.Component {
     } else if (this.props.end) {
       this.toggleSpaceClass(e, 'end');
     } else {
+      this.toggleWallBuilder();
+    }
+  }
+
+  toggleWall(e) {
+    if (this.wallBuilder) {
       this.toggleSpaceClass(e, 'wall');
     }
+  }
+
+  toggleWallBuilder() {
+    this.wallBuilder = !this.wallBuilder;
   }
 
   toggleSpaceClass(e, className) {

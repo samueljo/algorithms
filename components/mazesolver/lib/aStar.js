@@ -21,7 +21,6 @@ export default class AStar {
     for (let i = 0; i < path.length; i++) {
       let temp = path[i];
       let space = document.getElementById(`${temp.pos[0]} x ${temp.pos[1]}`);
-      debugger
       space.className += ' path';
     }
   }
