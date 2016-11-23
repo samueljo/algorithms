@@ -38,7 +38,7 @@ export default class MazeBuilder extends React.Component {
     } else if (this.props.end) {
       this.toggleSpaceClass(e, 'end');
     } else {
-      this.toggleWallBuilder();
+      this.toggleWallBuilder(e);
     }
   }
 
@@ -48,8 +48,9 @@ export default class MazeBuilder extends React.Component {
     }
   }
 
-  toggleWallBuilder() {
+  toggleWallBuilder(e) {
     this.wallBuilder = !this.wallBuilder;
+    this.toggleWall(e);
   }
 
   toggleSpaceClass(e, className) {
