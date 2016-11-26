@@ -62,6 +62,9 @@ export default class SetupBar extends React.Component {
         <button
           className={solvingClass}
           onClick={this.props.solveMaze}>Solve Maze</button>
+        <button
+          className='maze-button'
+          onClick={this.props.resetMaze}>Reset Maze</button>
       </div>
     );
   }

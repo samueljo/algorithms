@@ -25,6 +25,7 @@ export default class MazeSolver extends React.Component {
     this.setStartPoint = this.setStartPoint.bind(this);
     this.setEndPoint = this.setEndPoint.bind(this);
     this.setWalls = this.setWalls.bind(this);
+    this.resetMaze = this.resetMaze.bind(this);
   }
 
   setSize(e) {
@@ -77,6 +78,20 @@ export default class MazeSolver extends React.Component {
     aStar.solve();
   }
 
+  resetMaze() {
+    const defaultState = {
+      completed: false,
+      start: true,
+      end: false,
+      solving: false,
+      startPoint: null,
+      endPoint: null,
+      walls: {}
+    };
+
+    this.setState(Object.assign(this.state, defaultState));
+  }
+
   render() {
     return (
       <div className='maze-solver'>
@@ -87,6 +102,7 @@ export default class MazeSolver extends React.Component {
           setStart={this.setStart}
           setEnd={this.setEnd}
           buildMaze={this.buildMaze}
+          resetMaze={this.resetMaze}
           start={this.state.start}
           end={this.state.end}
           solving={this.state.solving} />
@@ -96,7 +112,8 @@ export default class MazeSolver extends React.Component {
           end={this.state.end}
           setStartPoint={this.setStartPoint}
           setEndPoint={this.setEndPoint}
-          setWalls={this.setWalls} />
+          setWalls={this.setWalls}
+          reset={this.state.reset} />
       </div>
     );
   }
