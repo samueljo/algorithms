@@ -16,7 +16,9 @@ export default class MazeSolver extends React.Component {
       solving: false,
       startPoint: null,
       endPoint: null,
-      walls: {} };
+      walls: {},
+      reset: false
+    };
     this.setSize = this.setSize.bind(this);
     this.solveMaze = this.solveMaze.bind(this);
     this.setStart = this.setStart.bind(this);
@@ -34,17 +36,17 @@ export default class MazeSolver extends React.Component {
   }
 
   setStart(e) {
-    const update = { start: true, end: false, solving: false };
+    const update = { start: true, end: false, solving: false, reset: false };
     this.setState(Object.assign(this.state, update));
   }
 
   setEnd(e) {
-    const update = { start: false, end: true, solving: false };
+    const update = { start: false, end: true, solving: false, reset: false };
     this.setState(Object.assign(this.state, update));
   }
 
   buildMaze(e) {
-    const update = { start: false, end: false, solving: false };
+    const update = { start: false, end: false, solving: false, reset: false };
     this.setState(Object.assign(this.state, update));
   }
 
@@ -69,7 +71,7 @@ export default class MazeSolver extends React.Component {
   }
 
   solveMaze() {
-    const update = { start: false, end: false, solving: true };
+    const update = { start: false, end: false, solving: true, reset: false };
     this.setState(Object.assign(this.state, update));
     const aStar = new AStar(
       this.state.startPoint,
@@ -81,12 +83,13 @@ export default class MazeSolver extends React.Component {
   resetMaze() {
     const defaultState = {
       completed: false,
-      start: true,
+      start: false,
       end: false,
       solving: false,
       startPoint: null,
       endPoint: null,
-      walls: {}
+      walls: {},
+      reset: true
     };
 
     this.setState(Object.assign(this.state, defaultState));
@@ -105,15 +108,16 @@ export default class MazeSolver extends React.Component {
           resetMaze={this.resetMaze}
           start={this.state.start}
           end={this.state.end}
-          solving={this.state.solving} />
+          solving={this.state.solving}
+          reset={this.state.reset} />
         <MazeBuilder
           size={this.state.size}
           start={this.state.start}
           end={this.state.end}
+          reset={this.state.reset}
           setStartPoint={this.setStartPoint}
           setEndPoint={this.setEndPoint}
-          setWalls={this.setWalls}
-          reset={this.state.reset} />
+          setWalls={this.setWalls} />
       </div>
     );
   }
