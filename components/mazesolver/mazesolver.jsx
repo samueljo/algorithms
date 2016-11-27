@@ -2,6 +2,7 @@ import React from 'react';
 import MazeBuilder from './components/MazeBuilder';
 import SetupBar from './components/SetupBar';
 import AStar from './lib/AStar';
+import StartBar from './components/StartBar';
 
 //AStar, Dijkstra, BFS
 
@@ -100,7 +101,6 @@ export default class MazeSolver extends React.Component {
       <div className='maze-solver'>
         <SetupBar
           setSize={this.setSize}
-          solveMaze={this.solveMaze}
           size={this.state.size}
           setStart={this.setStart}
           setEnd={this.setEnd}
@@ -118,6 +118,9 @@ export default class MazeSolver extends React.Component {
           setStartPoint={this.setStartPoint}
           setEndPoint={this.setEndPoint}
           setWalls={this.setWalls} />
+        <StartBar
+          solveMaze={this.solveMaze}
+          solving={this.state.solving} />
       </div>
     );
   }

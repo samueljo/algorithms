@@ -10,37 +10,31 @@ export default class SetupBar extends React.Component {
     let startClass;
     let endClass;
     let buildMazeClass;
-    let solvingClass;
     let resetClass;
     if (this.props.start) {
       startClass = 'maze-button active';
       endClass = 'maze-button';
       buildMazeClass = 'maze-button';
-      solvingClass = 'maze-button';
       resetClass = 'maze-button';
     } else if (this.props.end) {
       startClass = 'maze-button';
       endClass = 'maze-button active';
       buildMazeClass = 'maze-button';
-      solvingClass = 'maze-button';
       resetClass = 'maze-button';
     } else if (this.props.solving) {
       startClass = 'maze-button';
       endClass = 'maze-button';
       buildMazeClass = 'maze-button';
-      solvingClass = 'maze-button active';
       resetClass = 'maze-button';
     } else if (this.props.reset) {
       startClass = 'maze-button';
       endClass = 'maze-button';
       buildMazeClass = 'maze-button';
-      solvingClass = 'maze-button';
       resetClass = 'maze-button active';
     } else {
       startClass = 'maze-button';
       endClass = 'maze-button';
       buildMazeClass = 'maze-button active';
-      solvingClass = 'maze-button';
       resetClass = 'maze-button';
     }
 
@@ -70,9 +64,6 @@ export default class SetupBar extends React.Component {
         <button
           className={buildMazeClass}
           onClick={this.props.buildMaze}>Build Maze</button>
-        <button
-          className={solvingClass}
-          onClick={this.props.solveMaze}>Solve Maze</button>
         <button
           className={resetClass}
           onClick={this.props.resetMaze}>Reset Maze</button>
