@@ -20,7 +20,7 @@ export default class StartBar extends React.Component {
       <div className='sidebar'>
         <button
           className={aStarClass}
-          onClick={this.props.solveMaze}>aStar Algo</button>
+          onClick={this.props.aStar}>aStar Algo</button>
         <button
           className={otherClass}>Other Algo</button>
       </div>

@@ -56,8 +56,11 @@ export default class MazeBuilder extends React.Component {
   }
 
   toggleWall(e) {
-    if (this.wallBuilder && e.target.className === 'maze-space') {
-      this.toggleSpaceClass(e, 'wall');
+    const className = e.target.className;
+    if (this.wallBuilder) {
+      if (className === 'maze-space' || className === 'maze-space wall') {
+        this.toggleSpaceClass(e, 'wall');
+      }
     }
   }
 
@@ -103,7 +106,9 @@ export default class MazeBuilder extends React.Component {
   resetMaze() {
     const mazeSpaces = document.getElementsByClassName('maze-space');
     for (let i = 0; i < mazeSpaces.length; i++) {
-      mazeSpaces[i].className = 'maze-space';
+      if (mazeSpaces[i].className === 'maze-space path') {
+        mazeSpaces[i].className = 'maze-space';
+      }
     }
   }
 

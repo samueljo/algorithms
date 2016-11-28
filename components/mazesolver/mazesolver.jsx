@@ -4,7 +4,7 @@ import SetupBar from './components/SetupBar';
 import AStar from './lib/AStar';
 import StartBar from './components/StartBar';
 
-//AStar, Dijkstra, BFS
+//AStar, BFS
 
 export default class MazeSolver extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ export default class MazeSolver extends React.Component {
       reset: false
     };
     this.setSize = this.setSize.bind(this);
-    this.solveMaze = this.solveMaze.bind(this);
+    this.aStar = this.aStar.bind(this);
     this.setStart = this.setStart.bind(this);
     this.setEnd = this.setEnd.bind(this);
     this.buildMaze = this.buildMaze.bind(this);
@@ -71,7 +71,7 @@ export default class MazeSolver extends React.Component {
     this.setState(Object.assign(this.state, { walls: update }));
   }
 
-  solveMaze() {
+  aStar() {
     const update = { start: false, end: false, solving: true, reset: false };
     this.setState(Object.assign(this.state, update));
     const aStar = new AStar(
@@ -82,18 +82,8 @@ export default class MazeSolver extends React.Component {
   }
 
   resetMaze() {
-    const defaultState = {
-      completed: false,
-      start: false,
-      end: false,
-      solving: false,
-      startPoint: null,
-      endPoint: null,
-      walls: {},
-      reset: true
-    };
-
-    this.setState(Object.assign(this.state, defaultState));
+    const update = { start: false, end: false, solving: false, reset: true };
+    this.setState(Object.assign(this.state, update));
   }
 
   render() {
@@ -119,7 +109,7 @@ export default class MazeSolver extends React.Component {
           setEndPoint={this.setEndPoint}
           setWalls={this.setWalls} />
         <StartBar
-          solveMaze={this.solveMaze}
+          aStar={this.aStar}
           solving={this.state.solving} />
       </div>
     );
