@@ -18,7 +18,7 @@ export default class MazeSolver extends React.Component {
       startPoint: null,
       endPoint: null,
       walls: {},
-      reset: false
+      reset: 0
     };
     this.setSize = this.setSize.bind(this);
     this.aStar = this.aStar.bind(this);
@@ -37,17 +37,17 @@ export default class MazeSolver extends React.Component {
   }
 
   setStart(e) {
-    const update = { start: true, end: false, solving: false, reset: false };
+    const update = { start: true, end: false, solving: false, reset: 0 };
     this.setState(Object.assign(this.state, update));
   }
 
   setEnd(e) {
-    const update = { start: false, end: true, solving: false, reset: false };
+    const update = { start: false, end: true, solving: false, reset: 0 };
     this.setState(Object.assign(this.state, update));
   }
 
   buildMaze(e) {
-    const update = { start: false, end: false, solving: false, reset: false };
+    const update = { start: false, end: false, solving: false, reset: 0 };
     this.setState(Object.assign(this.state, update));
   }
 
@@ -72,7 +72,7 @@ export default class MazeSolver extends React.Component {
   }
 
   aStar() {
-    const update = { start: false, end: false, solving: true, reset: false };
+    const update = { start: false, end: false, solving: true, reset: 0 };
     this.setState(Object.assign(this.state, update));
     const aStar = new AStar(
       this.state.startPoint,
@@ -82,7 +82,12 @@ export default class MazeSolver extends React.Component {
   }
 
   resetMaze() {
-    const update = { start: false, end: false, solving: false, reset: true };
+    let update;
+    if (this.state.reset) {
+      update = { start: false, end: false, solving: false, reset: 2 };
+    } else {
+      update = { start: false, end: false, solving: false, reset: 1 };
+    }
     this.setState(Object.assign(this.state, update));
   }
 

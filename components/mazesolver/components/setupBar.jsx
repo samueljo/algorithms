@@ -66,7 +66,7 @@ export default class SetupBar extends React.Component {
           onClick={this.props.buildMaze}>Build Maze</button>
         <button
           className={resetClass}
-          onClick={this.props.resetMaze}>Reset Maze</button>
+          onClick={this.props.resetMaze}>Reset/Clear Maze</button>
       </div>
     );
   }

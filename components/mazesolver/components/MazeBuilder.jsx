@@ -12,7 +12,7 @@ export default class MazeBuilder extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.reset) {
-      this.resetMaze();
+      this.resetMaze(nextProps.reset);
       this.startPoint = false;
       this.endPoint = false;
       this.wallBuilder = false;
@@ -103,11 +103,17 @@ export default class MazeBuilder extends React.Component {
     }
   }
 
-  resetMaze() {
+  resetMaze(nextPropsReset) {
     const mazeSpaces = document.getElementsByClassName('maze-space');
-    for (let i = 0; i < mazeSpaces.length; i++) {
-      if (mazeSpaces[i].className === 'maze-space path') {
+    if (nextPropsReset === 2) {
+      for (let i = 0; i < mazeSpaces.length; i++) {
         mazeSpaces[i].className = 'maze-space';
+      }
+    } else {
+      for (let i = 0; i < mazeSpaces.length; i++) {
+        if (mazeSpaces[i].className === 'maze-space path') {
+          mazeSpaces[i].className = 'maze-space';
+        }
       }
     }
   }
