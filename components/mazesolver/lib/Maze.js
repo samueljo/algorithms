@@ -1,9 +1,11 @@
-const isWalkable = (wall, pos) => {
-  if (wall[`${pos[0]} x ${pos[1]}`] || pos[0] < 0 || pos[1] < 0) {
-    return false;
-  } else {
-    return true;
-  }
+const outOfBounds = (pos, upperLimit) => {
+  return (
+    pos[0] < 0 || pos[1] < 0 || pos[0] >= upperLimit || pos[1] >= upperLimit
+  );
+};
+
+const isWalkable = (wall, pos, upperLimit) => {
+  return !(wall[`${pos[0]} x ${pos[1]}`] || outOfBounds(pos, upperLimit));
 };
 
 const Maze = {
@@ -14,7 +16,7 @@ const Maze = {
     return pos;
   },
 
-  walkable: (wall, current) => {
+  walkable: (wall, current, upperLimit) => {
     const adjSquares = [];
     let row = current[0];
     let col = current[1];
@@ -23,10 +25,18 @@ const Maze = {
     let left = col - 1;
     let right = col + 1;
 
-    if (isWalkable(wall, [row, right])) { adjSquares.push([row, right]); }
-    if (isWalkable(wall, [row, left])) { adjSquares.push([row, left]); }
-    if (isWalkable(wall, [up, col])) { adjSquares.push([up, col]); }
-    if (isWalkable(wall, [down, col])) { adjSquares.push([down, col]); }
+    if (isWalkable(wall, [row, right], upperLimit)) {
+      adjSquares.push([row, right]);
+    }
+    if (isWalkable(wall, [row, left], upperLimit)) {
+      adjSquares.push([row, left]);
+    }
+    if (isWalkable(wall, [up, col], upperLimit)) {
+      adjSquares.push([up, col]);
+    }
+    if (isWalkable(wall, [down, col], upperLimit)) {
+      adjSquares.push([down, col]);
+    }
     // if (isWalkable(wall, [up, right])) { adjSquares.push([up, right]); }
     // if (isWalkable(wall, [down, right])) { adjSquares.push([down, right]); }
     // if (isWalkable(wall, [up, left])) { adjSquares.push([up, left]); }

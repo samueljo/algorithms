@@ -2,11 +2,12 @@ import Maze from './Maze';
 import Node from './Node';
 
 export default class AStar {
-  constructor(startPoint, endPoint, wall) {
+  constructor(startPoint, endPoint, wall, upperLimit) {
     this.startNode = new Node(Maze.toPosArray(startPoint), 0, 0, 0, 0);
     this.endNode = new Node(Maze.toPosArray(endPoint), 0, 0, 0, 0);
 
     this.wall = wall;
+    this.upperLimit = upperLimit;
 
     this.openPath = [this.startNode];
     this.closedPath = [];
@@ -31,7 +32,7 @@ export default class AStar {
   }
 
   _findNextNode(node) {
-    const adjSquares = Maze.walkable(this.wall, node.pos);
+    const adjSquares = Maze.walkable(this.wall, node.pos, this.upperLimit);
 
     for (let i = 0; i < adjSquares.length; i++) {
       let temp = adjSquares[i];

@@ -77,7 +77,9 @@ export default class MazeSolver extends React.Component {
     const aStar = new AStar(
       this.state.startPoint,
       this.state.endPoint,
-      this.state.walls);
+      this.state.walls,
+      this.state.size
+    );
     aStar.solve();
   }
 
