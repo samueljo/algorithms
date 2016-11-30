@@ -86,9 +86,13 @@ export default class MazeSolver extends React.Component {
   resetMaze() {
     let update;
     if (this.state.reset) {
-      update = { start: false, end: false, solving: false, reset: 2 };
+      update = {
+        start: false, end: false, solving: false, reset: 2, walls: {}
+      };
     } else {
-      update = { start: false, end: false, solving: false, reset: 1 };
+      update = {
+        start: false, end: false, solving: false, reset: 1
+      };
     }
     this.setState(Object.assign(this.state, update));
   }
