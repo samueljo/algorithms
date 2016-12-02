@@ -14,16 +14,21 @@ export default class AStar {
   }
 
   solve() {
+    let i = 0;
     const path = this._getPath();
-    this._drawPath(path);
+    this._drawPath(path, i);
   }
 
-  _drawPath(path) {
-    for (let i = 0; i < path.length; i++) {
-      let temp = path[i];
-      let space = document.getElementById(`${temp.pos[0]} x ${temp.pos[1]}`);
-      space.className += ' path';
-    }
+  _drawPath(path, i) {
+    setTimeout(() => {
+      if (i < path.length) {
+        let temp = path[i];
+        let space = document.getElementById(`${temp.pos[0]} x ${temp.pos[1]}`);
+        space.className += ' path';
+        i += 1;
+        this._drawPath(path, i);
+      }
+    }, 100);
   }
 
   _deleteAt(idx) {
