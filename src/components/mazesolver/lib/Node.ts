@@ -1,11 +1,11 @@
 export class Node {
-  pos: any;
-  parent: any;
+  pos: number[];
+  parent: number;
   gCost: number;
   hCost: number;
   fCost: number;
 
-  constructor(pos, parent, gCost, hCost, fCost) {
+  constructor(pos: number[], parent: number, gCost: number, hCost: number, fCost: number) {
     this.pos = pos;
     this.parent = parent;
     this.gCost = gCost;

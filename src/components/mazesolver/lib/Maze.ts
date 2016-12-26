@@ -1,29 +1,29 @@
-const outOfBounds = (pos, upperLimit) => {
+const outOfBounds = (pos: number[], upperLimit: number): boolean => {
   return (
     pos[0] < 0 || pos[1] < 0 || pos[0] >= upperLimit || pos[1] >= upperLimit
   );
 };
 
-const isWalkable = (wall, pos, upperLimit) => {
+const isWalkable = (wall: any, pos: number[], upperLimit: number): boolean => {
   return !(wall[`${pos[0]} x ${pos[1]}`] || outOfBounds(pos, upperLimit));
 };
 
 export const Maze = {
-  toPosArray: (space) => {
+  toPosArray: (space: any): number[] => {
     let pos = space.id.split(' x ');
     pos[0] = parseInt(pos[0]);
     pos[1] = parseInt(pos[1]);
     return pos;
   },
 
-  walkable: (wall, current, upperLimit) => {
-    const adjSquares = [];
-    let row = current[0];
-    let col = current[1];
-    let up = row + 1;
-    let down = row - 1;
-    let left = col - 1;
-    let right = col + 1;
+  walkable: (wall: any, current: number[], upperLimit: number): number[][] => {
+    const adjSquares: number[][] = [];
+    let row: number = current[0];
+    let col: number = current[1];
+    let up: number = row + 1;
+    let down: number = row - 1;
+    let left: number = col - 1;
+    let right: number = col + 1;
 
     if (isWalkable(wall, [row, right], upperLimit)) {
       adjSquares.push([row, right]);

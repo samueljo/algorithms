@@ -2,14 +2,14 @@ import { Maze } from './Maze';
 import { Node } from './Node';
 
 export class AStar {
-  startNode: any;
-  endNode: any;
+  startNode: Node;
+  endNode: Node;
   wall: any;
   upperLimit: number;
-  openPath: any;
-  closedPath: any;
+  openPath: Node[];
+  closedPath: Node[];
 
-  constructor(startPoint, endPoint, wall, upperLimit) {
+  constructor(startPoint: Node, endPoint: Node, wall: any, upperLimit: number) {
     this.startNode = new Node(Maze.toPosArray(startPoint), 0, 0, 0, 0);
     this.endNode = new Node(Maze.toPosArray(endPoint), 0, 0, 0, 0);
 
@@ -20,13 +20,13 @@ export class AStar {
     this.closedPath = [];
   }
 
-  solve() {
-    let i = 0;
-    const path = this._getPath();
+  solve(): void {
+    let i: number = 0;
+    const path: Node[] = this._getPath();
     this._drawPath(path, i);
   }
 
-  _drawPath(path, i) {
+  _drawPath(path: Node[], i: number): void {
     setTimeout(() => {
       if (i < path.length) {
         let temp = path[i];
@@ -38,12 +38,12 @@ export class AStar {
     }, 100);
   }
 
-  _deleteAt(idx) {
+  _deleteAt(idx: number): void {
     this.openPath.splice(idx, 1);
     return;
   }
 
-  _findNextNode(node) {
+  _findNextNode(node: Node): void {
     const adjSquares = Maze.walkable(this.wall, node.pos, this.upperLimit);
 
     for (let i = 0; i < adjSquares.length; i++) {
@@ -62,11 +62,11 @@ export class AStar {
     return;
   }
 
-  _getPath() {
+  _getPath(): Node[] {
     while (this.openPath.length > 0) {
-      let bestNodeIdx = this._getBestNodeIdx();
-      let currentNode = this.openPath[bestNodeIdx];
-      let path;
+      let bestNodeIdx: number = this._getBestNodeIdx();
+      let currentNode: Node = this.openPath[bestNodeIdx];
+      let path: Node[];
 
       if (this._isSamePos(currentNode.pos, this.endNode.pos)) {
         path = [this.endNode];
@@ -79,11 +79,11 @@ export class AStar {
 
       this._findNextNode(currentNode);
     }
-    console.log('No path found!');
+    return [];
   }
 
-  _getBestNodeIdx() {
-    let lowParent = 0;
+  _getBestNodeIdx(): number {
+    let lowParent: number = 0;
     for (let i = 0; i < this.openPath.length; i++) {
       if (this.openPath[i].fCost < this.openPath[lowParent].fCost) {
         lowParent = i;
@@ -92,7 +92,7 @@ export class AStar {
     return lowParent;
   }
 
-  _inOpenPath(node) {
+  _inOpenPath(node: number[]): boolean {
     for (let i = 0; i < this.openPath.length; i++) {
       if (this._isSamePos(this.openPath[i].pos, node)) {
         return true;
@@ -101,7 +101,7 @@ export class AStar {
     return false;
   }
 
-  _inClosedPath(node) {
+  _inClosedPath(node: number[]): boolean {
     for (let i = 0; i < this.closedPath.length; i++) {
       if (this._isSamePos(this.closedPath[i].pos, node)) {
         return true;
@@ -110,29 +110,29 @@ export class AStar {
     return false;
   }
 
-  _isSamePos(pos1, pos2) {
+  _isSamePos(pos1: number[], pos2: number[]): boolean {
     return (pos1[0] === pos2[0] && pos1[1] === pos2[1]);
   }
 
-  _gCost(current, next) {
-    const currentRow = current[0];
-    const currentCol = current[1];
-    const nextRow = next[0];
-    const nextCol = next[1];
+  _gCost(current: number[], next: number[]): number {
+    const currentRow: number = current[0];
+    const currentCol: number = current[1];
+    const nextRow: number = next[0];
+    const nextCol: number = next[1];
 
     return (currentRow === nextRow || currentCol === nextCol) ? 10 : 14;
   }
 
-  _hCost(next) {
-    const nextRow = next[0];
-    const nextCol = next[1];
-    const finalRow = this.endNode.pos[0];
-    const finalCol = this.endNode.pos[1];
+  _hCost(next: number[]): number {
+    const nextRow: number = next[0];
+    const nextCol: number = next[1];
+    const finalRow: number = this.endNode.pos[0];
+    const finalCol: number = this.endNode.pos[1];
 
     return (Math.abs(finalRow - nextRow) + Math.abs(finalCol - nextCol)) * 10;
   }
 
-  _traceEndToStart(currentNode, path) {
+  _traceEndToStart(currentNode: Node, path: Node[]): void {
     while (currentNode.parent !== 0) {
       currentNode = this.closedPath[currentNode.parent];
       path.unshift(currentNode);

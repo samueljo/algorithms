@@ -59,7 +59,7 @@ class AStar {
             this.closedPath.push(currentNode);
             this._findNextNode(currentNode);
         }
-        console.log('No path found!');
+        return [];
     }
     _getBestNodeIdx() {
         let lowParent = 0;
