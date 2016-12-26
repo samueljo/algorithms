@@ -1,13 +1,32 @@
-import React from 'react';
-import MazeBuilder from './components/MazeBuilder';
-import SetupBar from './components/SetupBar';
-import AStar from './lib/AStar';
-import StartBar from './components/StartBar';
+import * as React from 'react';
+import { MazeBuilder } from './components/MazeBuilder';
+import { SetupBar } from './components/SetupBar';
+import { AStar } from './lib/AStar';
+import { StartBar } from './components/StartBar';
 
 //AStar, BFS
 
-export default class MazeSolver extends React.Component {
-  constructor(props) {
+interface ObjectConstructor {
+    assign(target: any, ...sources: any[]): any;
+}
+
+
+interface MazeSolverProps {}
+
+interface MazeSolverState {
+  completed: boolean;
+  size: number;
+  start: boolean;
+  end: boolean;
+  solving: boolean;
+  startPoint: any;
+  endPoint: any;
+  walls: any;
+  reset: number;
+}
+
+export class MazeSolver extends React.Component<MazeSolverProps, MazeSolverState> {
+  constructor(props: MazeSolverProps) {
     super(props);
     this.state = {
       completed: false,
@@ -31,37 +50,37 @@ export default class MazeSolver extends React.Component {
     this.resetMaze = this.resetMaze.bind(this);
   }
 
-  setSize(e) {
+  setSize(e: any): void {
     const update = { size: parseInt(e.values[0]) };
     this.setState(Object.assign(this.state, update));
   }
 
-  setStart(e) {
+  setStart(e: any): void {
     const update = { start: true, end: false, solving: false, reset: 0 };
     this.setState(Object.assign(this.state, update));
   }
 
-  setEnd(e) {
+  setEnd(e: any): void {
     const update = { start: false, end: true, solving: false, reset: 0 };
     this.setState(Object.assign(this.state, update));
   }
 
-  buildMaze(e) {
+  buildMaze(e: any): void {
     const update = { start: false, end: false, solving: false, reset: 0 };
     this.setState(Object.assign(this.state, update));
   }
 
-  setStartPoint(value) {
+  setStartPoint(value: any): void {
     const update = { startPoint: value };
     this.setState(Object.assign(this.state, update));
   }
 
-  setEndPoint(value) {
+  setEndPoint(value: any): void {
     const update = { endPoint: value };
     this.setState(Object.assign(this.state, update));
   }
 
-  setWalls(id, value) {
+  setWalls(id: any, value: any): void {
     let update = Object.assign(this.state.walls, {});
     if (value === null) {
       delete update[id];
@@ -71,7 +90,7 @@ export default class MazeSolver extends React.Component {
     this.setState(Object.assign(this.state, { walls: update }));
   }
 
-  aStar() {
+  aStar(): void {
     const update = { start: false, end: false, solving: true, reset: 0 };
     this.setState(Object.assign(this.state, update));
     const aStar = new AStar(
@@ -83,7 +102,7 @@ export default class MazeSolver extends React.Component {
     aStar.solve();
   }
 
-  resetMaze() {
+  resetMaze(): void {
     let update;
     if (this.state.reset) {
       update = {

@@ -1,21 +1,41 @@
-import React from 'react';
+import * as React from 'react';
 
-export default class MazeBuilder extends React.Component {
-  constructor(props) {
+interface MazeBuilderState {
+  startPoint: boolean;
+  endPoint: boolean;
+  wallBuilder: boolean;
+}
+
+interface MazeBuilderProps {
+  size: number;
+  start: boolean;
+  end: boolean;
+  reset: number;
+  setStartPoint: { (value: any): void } ;
+  setEndPoint: { (value: any): void } ;
+  setWalls: { (id: any, value: any): void } ;
+}
+
+export class MazeBuilder extends React.Component<MazeBuilderProps, MazeBuilderState> {
+  constructor(props: MazeBuilderProps) {
     super(props);
-    this.startPoint = false;
-    this.endPoint = false;
-    this.wallBuilder = false;
+    this.state = {
+      startPoint: false,
+      endPoint: false,
+      wallBuilder: false
+    };
     this.toggleSpace = this.toggleSpace.bind(this);
     this.toggleWall = this.toggleWall.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: any): boolean | void {
     if (nextProps.reset) {
       this.resetMaze(nextProps.reset);
-      this.startPoint = false;
-      this.endPoint = false;
-      this.wallBuilder = false;
+      this.setState({
+        startPoint: false,
+        endPoint: false,
+        wallBuilder: false
+      });
     }
     return true;
   }
@@ -57,7 +77,7 @@ export default class MazeBuilder extends React.Component {
 
   toggleWall(e) {
     const className = e.target.className;
-    if (this.wallBuilder) {
+    if (this.state.wallBuilder) {
       if (className === 'maze-space' || className === 'maze-space wall') {
         this.toggleSpaceClass(e, 'wall');
       }
@@ -65,7 +85,11 @@ export default class MazeBuilder extends React.Component {
   }
 
   toggleWallBuilder(e) {
-    this.wallBuilder = !this.wallBuilder;
+    this.setState({
+      startPoint: this.state.startPoint,
+      endPoint: this.state.endPoint,
+      wallBuilder: !this.state.wallBuilder
+    });
     this.toggleWall(e);
   }
 
@@ -73,10 +97,18 @@ export default class MazeBuilder extends React.Component {
     if (e.target.className.includes(className)) {
       if (className === 'start') {
         this.props.setStartPoint(null);
-        this.startPoint = false;
+        this.setState({
+          startPoint: false,
+          endPoint: this.state.endPoint,
+          wallBuilder: !this.state.wallBuilder
+        });
       } else if (className === 'end') {
         this.props.setEndPoint(null);
-        this.endPoint = false;
+        this.setState({
+          startPoint: this.state.startPoint,
+          endPoint: false,
+          wallBuilder: !this.state.wallBuilder
+        });
       } else if (className === 'wall') {
         this.props.setWalls(e.target.id, null);
       }
@@ -90,13 +122,17 @@ export default class MazeBuilder extends React.Component {
   }
 
   noStartOrEndPoint(e, className) {
-    if (className === 'start' && !this.startPoint) {
+    if (className === 'start' && !this.state.startPoint) {
       this.props.setStartPoint(e.target);
-      this.startPoint = true;
+      this.state.startPoint = true;
       return true;
-    } else if (className === 'end' && !this.endPoint) {
+    } else if (className === 'end' && !this.state.endPoint) {
       this.props.setEndPoint(e.target);
-      this.endPoint = true;
+      this.setState({
+        startPoint: this.state.startPoint,
+        endPoint: true,
+        wallBuilder: !this.state.wallBuilder
+      });
       return true;
     } else {
       return false;

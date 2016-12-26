@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Tabs } from './tabs';
-// import MazeSolver from './mazesolver/MazeSolver';
+import { Tabs } from './Tabs';
+import { MazeSolver } from './mazesolver/MazeSolver';
 
-interface Algorithm {
+export interface Algorithm {
   title: string;
   content: any;
 }
@@ -14,8 +14,7 @@ interface RootProps {
 
 const algos: Algorithm[] = [
   {title: 'N-Queens', content: 'N-Queens Component Goes Here'},
-  // {title: 'Maze Solver', content: <MazeSolver />},
-  {title: 'Maze Solver', content: "Maze Solver"},
+  {title: 'Maze Solver', content: <MazeSolver />},
   {title: 'Other', content: 'Other Algo'}
 ];
 

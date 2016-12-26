@@ -28,4 +28,4 @@ var Headers = (function (_super) {
     return Headers;
 }(React.Component));
 exports.Headers = Headers;
-//# sourceMappingURL=headers.js.map
+//# sourceMappingURL=Headers.js.map

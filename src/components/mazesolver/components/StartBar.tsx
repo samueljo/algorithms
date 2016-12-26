@@ -1,14 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 
-export default class StartBar extends React.Component {
-  constructor(props) {
+interface StartBarProps {
+  aStar: { (): void; };
+  solving: boolean;
+}
+
+export class StartBar extends React.Component<StartBarProps, undefined> {
+  constructor(props: StartBarProps) {
     super(props);
   }
 
   render() {
     let aStarClass;
     let otherClass;
-    if (this.props.start) {
+    if (this.props.solving) {
       aStarClass = 'maze-button active';
       otherClass = 'maze-button';
     } else {

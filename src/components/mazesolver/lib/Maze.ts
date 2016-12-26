@@ -8,7 +8,7 @@ const isWalkable = (wall, pos, upperLimit) => {
   return !(wall[`${pos[0]} x ${pos[1]}`] || outOfBounds(pos, upperLimit));
 };
 
-const Maze = {
+export const Maze = {
   toPosArray: (space) => {
     let pos = space.id.split(' x ');
     pos[0] = parseInt(pos[0]);
@@ -45,5 +45,3 @@ const Maze = {
     return adjSquares;
   }
 };
-
-export default Maze;

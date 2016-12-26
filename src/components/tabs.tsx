@@ -1,10 +1,6 @@
 import * as React from "react";
-import { Headers } from './headers';
-
-interface Algorithm {
-  title: string;
-  content: any;
-}
+import { Headers } from './Headers';
+import { Algorithm } from './Root';
 
 interface TabsProps {
   algos: Algorithm[];
@@ -21,12 +17,12 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     this.selectTab = this.selectTab.bind(this);
   }
 
-  selectTab(num: number) {
+  selectTab(num: number): void {
     this.setState({ selectedPane: num });
   }
 
   render() {
-    let pane = this.props.algos[this.state.selectedPane];
+    let pane: Algorithm = this.props.algos[this.state.selectedPane];
 
     return (
       <div className='tabs'>

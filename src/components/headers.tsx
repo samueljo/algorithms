@@ -1,19 +1,18 @@
 import * as React from "react";
+import { Algorithm } from './Root';
 
 interface HeaderProps {
-  selectedPane: any;
-  algos: any;
-  selectTab: {
-    (num: number): void;
-  };
+  selectedPane: number;
+  algos: Algorithm[];
+  selectTab: { (num: number): void; };
 }
 
 export class Headers extends React.Component<HeaderProps, undefined> {
   render() {
-    let selected = this.props.selectedPane;
-    let headers = this.props.algos.map((pane: any, idx: any) => {
-      let title = pane.title;
-      let klass = 'tab';
+    let selected: number = this.props.selectedPane;
+    let headers: any = this.props.algos.map((pane: any, idx: any) => {
+      let title: string = pane.title;
+      let klass: string = 'tab';
       if (idx === selected) {
         klass = 'active tab';
       }

@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require("react");
-var headers_1 = require("./headers");
+var Headers_1 = require("./Headers");
 var Tabs = (function (_super) {
     __extends(Tabs, _super);
     function Tabs(props) {
@@ -20,10 +20,10 @@ var Tabs = (function (_super) {
     Tabs.prototype.render = function () {
         var pane = this.props.algos[this.state.selectedPane];
         return (React.createElement("div", { className: 'tabs' },
-            React.createElement(headers_1.Headers, { selectedPane: this.state.selectedPane, selectTab: this.selectTab, algos: this.props.algos }),
+            React.createElement(Headers_1.Headers, { selectedPane: this.state.selectedPane, selectTab: this.selectTab, algos: this.props.algos }),
             React.createElement("div", { className: 'tab-content' }, pane.content)));
     };
     return Tabs;
 }(React.Component));
 exports.Tabs = Tabs;
-//# sourceMappingURL=tabs.js.map
+//# sourceMappingURL=Tabs.js.map

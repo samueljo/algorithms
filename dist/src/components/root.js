@@ -5,10 +5,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require("react");
-var tabs_1 = require("./tabs");
+var Tabs_1 = require("./Tabs");
+var MazeSolver_1 = require("./mazesolver/MazeSolver");
 var algos = [
     { title: 'N-Queens', content: 'N-Queens Component Goes Here' },
-    { title: 'Maze Solver', content: "Maze Solver" },
+    { title: 'Maze Solver', content: React.createElement(MazeSolver_1.MazeSolver, null) },
     { title: 'Other', content: 'Other Algo' }
 ];
 var Root = (function (_super) {
@@ -20,9 +21,9 @@ var Root = (function (_super) {
         return (React.createElement("div", null,
             React.createElement("h1", { className: 'main-header' }, "ALGORITHMS"),
             React.createElement("div", null,
-                React.createElement(tabs_1.Tabs, { algos: algos }))));
+                React.createElement(Tabs_1.Tabs, { algos: algos }))));
     };
     return Root;
 }(React.Component));
 exports.Root = Root;
-//# sourceMappingURL=root.js.map
+//# sourceMappingURL=Root.js.map
