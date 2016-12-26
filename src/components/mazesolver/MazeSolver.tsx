@@ -6,11 +6,6 @@ import { StartBar } from './components/StartBar';
 
 //AStar, BFS
 
-interface ObjectConstructor {
-    assign(target: any, ...sources: any[]): any;
-}
-
-
 interface MazeSolverProps {}
 
 interface MazeSolverState {
