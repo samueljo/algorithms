@@ -8,7 +8,6 @@ var React = require("react");
 var tabs_1 = require("./tabs");
 var algos = [
     { title: 'N-Queens', content: 'N-Queens Component Goes Here' },
-    // {title: 'Maze Solver', content: <MazeSolver />},
     { title: 'Maze Solver', content: "Maze Solver" },
     { title: 'Other', content: 'Other Algo' }
 ];

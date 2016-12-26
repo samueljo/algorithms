@@ -1,10 +1,15 @@
-import * as React from 'react';
+import * as React from "react";
 import { Tabs } from './tabs';
 // import MazeSolver from './mazesolver/MazeSolver';
 
 interface Algorithm {
   title: string;
   content: any;
+}
+
+interface RootProps {
+  compiler: string;
+  framework: string;
 }
 
 const algos: Algorithm[] = [
@@ -14,7 +19,7 @@ const algos: Algorithm[] = [
   {title: 'Other', content: 'Other Algo'}
 ];
 
-export class Root extends React.Component<undefined, undefined> {
+export class Root extends React.Component<RootProps, undefined> {
   render() {
     return(
       <div>

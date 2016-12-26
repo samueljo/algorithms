@@ -1,9 +1,9 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Root } from './components/root';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Root compiler="TypeScript" framwork="React" />,
-    document.getElementById('main'));
-});
+import { Root } from "./components/root";
+
+ReactDOM.render(
+    <Root compiler="TypeScript" framework="React" />,
+    document.getElementById("main")
+);

@@ -1,29 +1,28 @@
-const path = require('path');
-
 module.exports = {
-  context: __dirname,
-  entry: './algorithms.jsx',
+  entry: "./src/index.tsx",
   output: {
-    filename: 'bundle.js'
+    filename: "bundle.js",
+    path: __dirname + "/dist"
   },
+
+  devtool: "source-map",
+
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
   },
+
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015']
-        }
-      },
-      {
-        test: /\.node$/,
-        loader: 'node-loader'
-      }
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
+    ],
+
+    preLoaders: [
+      { test: /\.js$/, loader: "source-map-loader" }
     ]
   },
-  devtool: 'source-maps'
+
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM"
+  },
 };
