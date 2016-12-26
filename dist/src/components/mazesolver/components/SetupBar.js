@@ -1,21 +1,15 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var React = require("react");
-var rheostat_1 = require("rheostat");
-var SetupBar = (function (_super) {
-    __extends(SetupBar, _super);
-    function SetupBar(props) {
-        return _super.call(this, props) || this;
+const React = require("react");
+const rheostat_1 = require("rheostat");
+class SetupBar extends React.Component {
+    constructor(props) {
+        super(props);
     }
-    SetupBar.prototype.render = function () {
-        var startClass;
-        var endClass;
-        var buildMazeClass;
-        var resetClass;
+    render() {
+        let startClass;
+        let endClass;
+        let buildMazeClass;
+        let resetClass;
         if (this.props.start) {
             startClass = 'maze-button active';
             endClass = 'maze-button';
@@ -58,8 +52,7 @@ var SetupBar = (function (_super) {
             React.createElement("button", { className: endClass, onClick: this.props.setEnd }, "Set End"),
             React.createElement("button", { className: buildMazeClass, onClick: this.props.buildMaze }, "Build Maze"),
             React.createElement("button", { className: resetClass, onClick: this.props.resetMaze }, "Reset/Clear Maze")));
-    };
-    return SetupBar;
-}(React.Component));
+    }
+}
 exports.SetupBar = SetupBar;
 //# sourceMappingURL=SetupBar.js.map

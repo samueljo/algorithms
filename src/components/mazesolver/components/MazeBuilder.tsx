@@ -33,7 +33,7 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
     return true;
   }
 
-  createCols(row) {
+  createCols(row: number): any[] {
     const cols = [];
     for (let i = 0; i < this.props.size; i++) {
       cols.push(<td
@@ -46,7 +46,7 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
     return cols;
   }
 
-  createRows() {
+  createRows(): any[] {
     const rows = [];
     let cols;
     for (let i = 0; i < this.props.size; i++) {
@@ -56,7 +56,7 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
     return rows;
   }
 
-  toggleSpace(e) {
+  toggleSpace(e: any): void {
     if (this.props.start) {
       this.toggleSpaceClass(e, 'start');
     } else if (this.props.end) {
@@ -68,8 +68,8 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
     }
   }
 
-  toggleWall(e) {
-    const className = e.target.className;
+  toggleWall(e: any): void {
+    const className: string = e.target.className;
     if (this.wallBuilder) {
       if (className === 'maze-space' || className === 'maze-space wall') {
         this.toggleSpaceClass(e, 'wall');
@@ -77,12 +77,12 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
     }
   }
 
-  toggleWallBuilder(e) {
+  toggleWallBuilder(e: any): void {
     this.wallBuilder = !this.wallBuilder;
     this.toggleWall(e);
   }
 
-  toggleSpaceClass(e, className) {
+  toggleSpaceClass(e: any, className: string): void {
     if (e.target.className.includes(className)) {
       if (className === 'start') {
         this.props.setStartPoint(null);
@@ -102,7 +102,7 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
     }
   }
 
-  noStartOrEndPoint(e, className) {
+  noStartOrEndPoint(e: any, className: string): boolean {
     if (className === 'start' && !this.startPoint) {
       this.props.setStartPoint(e.target);
       this.startPoint = true;
@@ -116,7 +116,7 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
     }
   }
 
-  resetMaze(nextPropsReset) {
+  resetMaze(nextPropsReset: number): void {
     const mazeSpaces = document.getElementsByClassName('maze-space');
     if (nextPropsReset === 2) {
       for (let i = 0; i < mazeSpaces.length; i++) {
@@ -132,7 +132,7 @@ export class MazeBuilder extends React.Component<MazeBuilderProps, undefined> {
   }
 
   render() {
-    const rows = this.createRows();
+    const rows: any[] = this.createRows();
 
     return (
       <div className='maze'>

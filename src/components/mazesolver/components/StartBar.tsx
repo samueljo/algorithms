@@ -11,8 +11,8 @@ export class StartBar extends React.Component<StartBarProps, undefined> {
   }
 
   render() {
-    let aStarClass;
-    let otherClass;
+    let aStarClass: string;
+    let otherClass: string;
     if (this.props.solving) {
       aStarClass = 'maze-button active';
       otherClass = 'maze-button';
