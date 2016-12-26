@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tabs } from './Tabs';
+import { Tabs } from './tabs';
 import { MazeSolver } from './mazesolver/MazeSolver';
 
 export interface Algorithm {

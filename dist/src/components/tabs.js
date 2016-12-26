@@ -1,29 +1,21 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var React = require("react");
-var Headers_1 = require("./Headers");
-var Tabs = (function (_super) {
-    __extends(Tabs, _super);
-    function Tabs(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = { selectedPane: 0 };
-        _this.selectTab = _this.selectTab.bind(_this);
-        return _this;
+const React = require("react");
+const Headers_1 = require("./Headers");
+class Tabs extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { selectedPane: 0 };
+        this.selectTab = this.selectTab.bind(this);
     }
-    Tabs.prototype.selectTab = function (num) {
+    selectTab(num) {
         this.setState({ selectedPane: num });
-    };
-    Tabs.prototype.render = function () {
-        var pane = this.props.algos[this.state.selectedPane];
+    }
+    render() {
+        let pane = this.props.algos[this.state.selectedPane];
         return (React.createElement("div", { className: 'tabs' },
             React.createElement(Headers_1.Headers, { selectedPane: this.state.selectedPane, selectTab: this.selectTab, algos: this.props.algos }),
             React.createElement("div", { className: 'tab-content' }, pane.content)));
-    };
-    return Tabs;
-}(React.Component));
+    }
+}
 exports.Tabs = Tabs;
 //# sourceMappingURL=Tabs.js.map

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Headers } from './Headers';
-import { Algorithm } from './Root';
+import { Headers } from './headers';
+import { Algorithm } from './root';
 
 interface TabsProps {
   algos: Algorithm[];

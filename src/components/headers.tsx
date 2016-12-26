@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Algorithm } from './Root';
+import { Algorithm } from './root';
 
 interface HeaderProps {
   selectedPane: number;

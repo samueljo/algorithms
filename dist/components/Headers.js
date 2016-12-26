@@ -17,4 +17,4 @@ class Headers extends React.Component {
     }
 }
 exports.Headers = Headers;
-//# sourceMappingURL=Headers.js.map
+//# sourceMappingURL=headers.js.map
