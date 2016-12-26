@@ -1,6 +1,6 @@
 "use strict";
 const React = require("react");
-const Tabs_1 = require("./Tabs");
+const tabs_1 = require("./tabs");
 const MazeSolver_1 = require("./mazesolver/MazeSolver");
 const algos = [
     { title: 'N-Queens', content: 'N-Queens Component Goes Here' },
@@ -12,8 +12,8 @@ class Root extends React.Component {
         return (React.createElement("div", null,
             React.createElement("h1", { className: 'main-header' }, "ALGORITHMS"),
             React.createElement("div", null,
-                React.createElement(Tabs_1.Tabs, { algos: algos }))));
+                React.createElement(tabs_1.Tabs, { algos: algos }))));
     }
 }
 exports.Root = Root;
-//# sourceMappingURL=Root.js.map
+//# sourceMappingURL=root.js.map
